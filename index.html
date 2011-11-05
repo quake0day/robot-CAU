@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>RobotKingdom 胜利杯机器人交流邀请赛（北京）官方网站</title>
+<style type="text/css">
+body {
+	background: #1d1d1d;
+	margin: 0; padding: 0;
+	font: 10px normal Arial, Helvetica, sans-serif;
+}
+* {margin: 0; padding: 0; outline: none;}
+img {border: none;}
+h1 {
+	font: 3em normal Georgia, "Times New Roman", Times, serif;
+	color: #fff;
+	text-align: center;
+	background: url(h1_bg.gif) no-repeat;
+	text-indent: -99999px;
+	margin: 100px 0 10px;
+}
+.container {
+	overflow: hidden;
+	width: 900px;
+	margin: 0 auto;
+}
+.container2 {
+	overflow: hidden;
+	text-align: right;
+	width: 900px;
+	margin: 10px auto 0px auto;
+	color: #FFFFFF;
+	font-size: 12px;
+}
+#main {
+	padding: 10px;
+	background: #f0f0f0;
+	border: 1px solid #ccc;
+}
+a {color: #fff;}
+
+/*--Main Image Preview--*/
+.main_image {
+	width: 598px; height: 456px;
+	float: left;
+	background: #333;
+	position: relative;
+	overflow: hidden;
+	color: #fff;
+}
+.main_image h2 {
+	font-size: 2em;
+	font-weight: normal;
+	margin: 0 0 5px;	padding: 10px;
+}
+.main_image p {
+	font-size: 1.2em;
+	padding: 10px;	margin: 0;
+	line-height: 1.6em;
+}
+.block small { 
+	padding: 0 0 0 20px; 
+	background: url(icon_calendar.gif) no-repeat 0 center; 
+	font-size: 1em; 
+}
+.main_image .block small {margin-left: 10px;}
+.main_image .desc{
+	position: absolute;
+	bottom: 0;	left: 0;
+	width: 100%;
+	display: none;
+}
+.main_image .block{
+	width: 100%;
+	background: #111;
+	border-top: 1px solid #000;
+}
+.main_image a.collapse {
+	background: url(btn_collapse.gif) no-repeat left top;
+	height: 27px; width: 93px;
+	text-indent: -99999px;
+	position: absolute; 
+	top: -27px; right: 20px; 
+}
+.main_image a.show {background-position: left bottom;} 
+
+
+.image_thumb {
+	float: left;
+	width: 299px;
+	background: #f0f0f0;
+	border-right: 1px solid #fff;
+	border-top: 1px solid #ccc;
+}
+.image_thumb img {
+	border: 1px solid #ccc; 
+	padding: 5px; 
+	background: #fff; 
+	float: left;
+}
+.image_thumb ul {
+	margin: 0; padding: 0;
+	list-style: none;
+}
+.image_thumb ul li{
+	margin: 0; padding: 12px 10px;
+	background: #f0f0f0 url(nav_a.gif) repeat-x;
+	width: 279px;
+	float: left;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #fff;
+	border-right: 1px solid #ccc;
+}
+.image_thumb ul li.hover {
+	background: #ddd;
+	cursor: pointer;
+}
+.image_thumb ul li.active {
+	background: #fff;
+	cursor: default;
+}
+html .image_thumb ul li h2 {
+	font-size: 1.5em; 
+	margin: 5px 0; padding: 0;
+}
+.image_thumb ul li .block {
+	float: left; 
+	margin-left: 10px;
+	padding: 0;
+	width: 170px;
+}	
+.image_thumb ul li p{display: none;}
+
+.STYLE1 {color: #000000}
+</style>
+<!--Call jQuery-->
+<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {	
+
+	//Show Banner
+	$(".main_image .desc").show(); //Show Banner
+	$(".main_image .block").animate({ opacity: 0.85 }, 1 ); //Set Opacity
+
+	//Click and Hover events for thumbnail list
+	$(".image_thumb ul li:first").addClass('active'); 
+	$(".image_thumb ul li").click(function(){ 
+		//Set Variables
+		var imgAlt = $(this).find('img').attr("alt"); //Get Alt Tag of Image
+		var imgTitle = $(this).find('a').attr("href"); //Get Main Image URL
+		var imgDesc = $(this).find('.block').html(); 	//Get HTML of block
+		var imgDescHeight = $(".main_image").find('.block').height();	//Calculate height of block	
+		
+		if ($(this).is(".active")) {  //If it's already active, then...
+			return false; // Don't click through
+		} else {
+			//Animate the Teaser				
+			$(".main_image .block").animate({ opacity: 0, marginBottom: -imgDescHeight }, 250 , function() {
+				$(".main_image .block").html(imgDesc).animate({ opacity: 0.85,	marginBottom: "0" }, 250 );
+				$(".main_image img").attr({ src: imgTitle , alt: imgAlt});
+			});
+		}
+		
+		$(".image_thumb ul li").removeClass('active'); //Remove class of 'active' on all lists
+		$(this).addClass('active');  //add class of 'active' on this list only
+		return false;
+		
+	}) .hover(function(){
+		$(this).addClass('hover');
+		}, function() {
+		$(this).removeClass('hover');
+	});
+			
+	//Toggle Teaser
+	$("a.collapse").click(function(){
+		$(".main_image .block").slideToggle();
+		$("a.collapse").toggleClass("show");
+	});
+	
+});//Close Function
+</script>
+</head>
+
+<body>
+<div class="container">
+	<h1>陈思制作<small>by quake0day</small></h1>
+</div>
+<div id="main" class="container">
+	<div class="main_image">
+		<img src="banner1.jpg" alt="- banner1" />
+		<div class="desc">
+			<a href="#" class="collapse">Close Me!</a>
+			<div class="block">
+				<h2>大赛介绍</h2>
+				<small>2009/08/10</small>
+				
+				<p>欢迎来到“胜利杯”机器人交流友谊赛（北京）官方网站！ 目前<b>正在接受报名中，请前往<a href="http://www.robotkingdom.org/bmxt/add.php" target="_blank" >这里报名</a></b><br /><br />
+                近年来，机器人比赛层出不穷，比如世界知名的RoboCup和 FIRA比赛。在各种比赛的组织和举办之下，人们对机器人的热情得到了促发，参赛者之间的交流得到了加强，这在一定程度上使参赛者对自己的作品有更深刻的认识，也在一定程度上促进了机器人产业的发展。如今，在各大高校及部分企业都开设专门的机器人创新或研究实验室，机器人技术的发展成为其科研实力与市场开发潜力的一个具体体现。<br /><br />
+目前，影响智能机器人性能的因素有很多，包括机器人的导航、定位、通讯、控制策略及体系结构等。其中导航和定位受多方面因素影响成为一时难以解决的问题。因此，现今对智能机器人发展影响较大的四个热门主题是智能控制、多传感器的信息融合、路径规划和语音识别。机器人所涉及的领域范围广阔，能够促进各学科之间的交流与配合，也能够很好地促进学科交叉发展。<br /><br />为了更好地提升机器人的发展水平，更好地促进社会各界机器人爱好者或研究人员之间的交流！，在中国农业大学和英国机械工程师协会（IMechE）的大力支持下，以英国机械工程师协会中国农业大学学生分会为首，结合北京各大高校与社会上的部分企业，共同发起举办本次机器人应用挑战赛 </p>
+
+			</div>
+		</div>
+	</div>
+	<div class="image_thumb">
+		<ul>
+			<li>
+				<a href="banner1.jpg"><img src="banner1_thumb.jpg" alt="Slowing Dow" /></a>
+				<div class="block">
+					<h2>大赛介绍</h2>
+					<small>2009/08/10</small>
+					
+					<p>近年来，机器人比赛层出不穷，比如世界知名的RoboCup和 FIRA比赛。在各种比赛的组织和举办之下，人们对机器人的热情得到了促发，参赛者之间的交流得到了加强，这在一定程度上使参赛者对自己的作品有更深刻的认识，也在一定程度上促进了机器人产业的发展。如今，在各大高校及部分企业都开设专门的机器人创新或研究实验室，机器人技术的发展成为其科研实力与市场开发潜力的一个具体体现。<br /><br />
+目前，影响智能机器人性能的因素有很多，包括机器人的导航、定位、通讯、控制策略及体系结构等。其中导航和定位受多方面因素影响成为一时难以解决的问题。因此，现今对智能机器人发展影响较大的四个热门主题是智能控制、多传感器的信息融合、路径规划和语音识别。机器人所涉及的领域范围广阔，能够促进各学科之间的交流与配合，也能够很好地促进学科交叉发展。<br /><br />为了更好地提升机器人的发展水平，更好地促进社会各界机器人爱好者或研究人员之间的交流！，在中国农业大学和英国机械工程师协会（IMechE）的大力支持下，以英国机械工程师协会中国农业大学学生分会为首，结合北京各大高校与社会上的部分企业，共同发起举办本次机器人应用挑战赛 </p>
+				</div>
+			</li>
+			<li>
+				<a href="banner2.jpg"><img src="banner2_thumb.jpg" alt="Organized Food Fight" /></a>
+				<div class="block">
+					<h2>题目要求</h2>
+					<small>2009/08/19</small>
+					<p>内容：“胜利杯”机器人交流友谊赛每隔两年举行一届。其中，奇数届的比赛为策划赛（只需要根据题目提供自己的设想，完成机器人的设计策划说明书），偶数届比赛为实战赛（一般与策划赛的题目相关联，结合2年前的策划赛进行机器人的制作，最终将机器人实物投入比赛）。本届比赛为第一届“胜利杯”机器人交流友谊赛，<b>故其比赛内容为策划赛，各参赛队伍需要根据题目和要求提供一份详细的可行的作品设计方案说明书等材料。</b></p>
+					<p>题目：设计并制作一款<b>家庭服务或家政服务型机器人</b>。<br />
+要求：<br />
+（1）满足机器人的定义：“一种可编程和多功能的，用来搬运材料、零件、工具的操作机；或是为了执行不同的任务而具有可改变和可编程动作的专门系统。”<br />
+（2）符合本次比赛的主题和内容。<br />
+（3）能够实现设计者的要求、动作以及功能等，并且具有实用价值和创新特点。<br />
+（4）参赛作品必须为近2年来（2008~2010年）所研究的创新成果，杜绝抄袭。<br />
+</p>
+				</div>
+			</li>
+			<li>
+				<a href="banner3.jpg"><img src="banner3_thumb.jpg" alt="Endangered Species" /></a>
+				<div class="block">
+					<h2>比赛方式</h2>
+					<small>2009/08/19</small>
+					<p>凡有意愿者，均可报名参加，以高校学生为主并面向社会群体（不局限于高校），不限年龄，不限学历，不限行业，不限职称，鼓励各大国内外企业参加比赛。<br />建议各参赛选手能够建立一个团队小组，小组人数最多为7人，可以是高校实验室或企业内部的开发小组，可以是社会人士的自由组合，也可以是不同高校之间组成的队伍，组队原则如下：<br />
+（1）自愿；<br />
+（2）鼓励有机器人设计相关经验的同事或同学和无相关经验但有专业或者行业背景的同事或同学混合组队；<br />
+（3）鼓励高校的学生之间或者高校的学生和企业的工作人员之间混合组队;<br />
+（4）鼓励高校中的高年级同学和低年级同学组队，鼓励跨院、跨专业混合组队，甚至欢迎老师带领学生来参赛；<br />
+（5）社会上鼓励跨行业组队；<br />
+相关比赛条例将于10月1日在本网站以及学校、合作企业的网站与论坛上公布。另外，<b>《“胜利杯”机器人交流友谊赛比赛相关条例》</b>也会随之公布，一切参赛活动不得违背<b>《“胜利杯”机器人交流友谊赛比赛相关条例》</b>。
+</p>
+				</div>
+			</li>
+			<li>
+				<a href="banner4.jpg"><img src="banner4_thumb.jpg" alt="Evolution" /></a>
+				<div class="block">
+					<h2>我要报名</h2>
+  <small>2009/08/10</small>
+					<p><b>请登录<a href="http://www.robotkingdom.org/bmxt/add.php" target="_blank">http://www.robotkingdom.org/bmxt/add.php</a> 进行报名</b><br />
+                    <b>报名时间：2009年9月5日00：00至2009年10月1日，24：00</b><br />
+报名地点：登陆本网站进行网络报名即可。
+</p>
+				</div>
+			</li>
+			<li>
+				<a href="banner5.jpg"><img src="banner5_thumb.jpg" alt="Puzzled Putter" /></a>
+				<div class="block">
+					<blockquote>
+					  <h2>奖项设置</h2>
+				  </blockquote>
+					<small>2009/08/10</small>
+					<p>由大赛评委会（占分数的70%）和网络投票（占分数的30%）共同评出一等奖，二等奖，成功参赛奖，按照最后参赛队数决定，大概比例为10%一等奖+20%二等奖+30%成功参赛奖。网络投票方面，作品将会公布于网上，发起网络投票。<br />
+最后由从中抽出一等奖或者一部分优秀者参加最后是赞助方组织的答辩，答辩评出最佳奖。最佳奖将给与最高的奖励并获得“胜利杯”，具体事项由赞助方决定。
+</p>
+				</div>
+			</li>
+			<li>
+				<a href="banner6.jpg"><img src="banner6_thumb.jpg" alt="Secret Habit" /></a>
+				<div class="block">
+					<h2>资料下载</h2>
+					<small>2009/08/10</small>
+					<p>暂无</p>
+				</div>
+			</li>
+		</ul>
+  </div>
+</div>
+<div class="container2">
+
+  <p>主办：中国农业大学未来工程师协会暨英国机械工程师协会农大学生分会
+Future Engineer Association - IMechE Student Chapter, CAU<br />
+特别鸣谢：<img width="116" height="35" src="index_clip_image002_0000.jpg" />
+&nbsp;
+
+<img src="index_clip_image002.jpg" name="ss" width="128" height="35" /></p>
+</div>
+
+
+</body>
+</html>
